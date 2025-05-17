@@ -159,6 +159,13 @@ const LanguageManager = {
     setLanguage(lang) {
         this.currentLanguage = lang;
         document.documentElement.lang = lang;
+        
+        // CV_DATA-nı localStorage-dən yenidən oxu
+        const savedData = localStorage.getItem('cvData');
+        if (savedData) {
+            CV_DATA = JSON.parse(savedData);
+        }
+        
         this.updateTexts();
         localStorage.setItem('language', lang);
 
@@ -179,115 +186,31 @@ const LanguageManager = {
             });
         });
 
-        if (this.currentLanguage === 'en') {
-            CV_DATA.personalInfo.jobTitle = "Web & Game Developer | Programmer | InfoSec Specialist";
-            CV_DATA.profile = "I am an experienced specialist in setting up security systems and managing IT infrastructure. I have skills in Windows and Linux systems, network security, and data protection. Additionally, I have knowledge in both backend and frontend web programming. I have experience in creating websites from scratch, writing programs, and developing PC or mobile games.";
-            
-            CV_DATA.experience[0].title = "Freelance Web Designer";
-            CV_DATA.experience[0].period = "2023 - Present";
-            CV_DATA.experience[0].company = "Remote";
-            CV_DATA.experience[0].description = [
-                "Designed and developed responsive websites using HTML, CSS, and JavaScript.",
-                "Collaborated with clients to understand UI/UX needs and present optimized solutions.",
-                "Integrated SEO best practices and ensured cross-browser compatibility."
-            ];
-
-            CV_DATA.experience[1].title = "Founder & Lead Game Developer";
-            CV_DATA.experience[1].period = "2026 - Present";
-            CV_DATA.experience[1].description = [
-                "Founded Rey Studio to develop creative and immersive gaming experiences for PC and mobile platforms.",
-                "Designed and programmed game mechanics, character systems, and level designs using Unity and C#.",
-                "Led a small team of artists and programmers, managed development cycles, and oversaw publishing processes."
-            ];
-
-            CV_DATA.experience[2].title = "Cybersecurity Specialist";
-            CV_DATA.experience[2].description = [
-                "Assisted in monitoring network activity and detecting potential threats.",
-                "Learned the basics of penetration testing and participated in internal audits.",
-                "Worked with open-source OSINT tools to collect and analyze public information."
-            ];
-
-            CV_DATA.education[0].school = "Azerbaijan Technical University";
-            CV_DATA.education[0].degree = "BSc Cybersecurity";
-            CV_DATA.education[1].degree = "MSc Computer Science";
-
-            CV_DATA.skills = [
-                "HTML & CSS",
-                "JavaScript",
-                "Python",
-                "C++ / C#",
-                "Responsive Web Design",
-                "Game Development (Unity / Unreal Engine)",
-                "Cybersecurity Principles",
-                "Network Security",
-                "Information Security Management"
-            ];
-
-            CV_DATA.languages = [
-                "Azerbaijani (Native)",
-                "English (Intermediate)",
-                "Turkish (Fluent)",
-                "Spanish (Basic)"
-            ];
-
-            CV_DATA.references[0].position = "SkyTech / Information Security Manager";
-            CV_DATA.references[1].position = "Rey Studio / Game Artist";
-        } else {
-            CV_DATA.personalInfo.jobTitle = "Veb & Oyun Tərtibatçı | Proqramçı | İnfoSec Mütəxəssis";
-            CV_DATA.profile = "Təhlükəsizlik sistemlərinin qurulması və İT infrastrukturunun idarə edilməsi sahəsində təcrübəli mütəxəssisəm. Windows və Linux sistemləri, şəbəkə təhlükəsizliyi və məlumatların qorunması sahələrində bacarıqlarım var. Bundan əlavə, həm backend, həm də frontend veb proqramlaşdırma biliklərim var. Sıfırdan vebsaytlar yaratmaq, proqramlar yazmaq və PC və ya mobil oyunlar inkişaf etdirmək təcrübəm var.";
-
-            CV_DATA.experience[0].title = "Freelance Veb Dizayner";
-            CV_DATA.experience[0].period = "2023 - Günümüzə qədər";
-            CV_DATA.experience[0].company = "Uzaqdan";
-            CV_DATA.experience[0].description = [
-                "HTML, CSS və JavaScript istifadə edərək responsiv vebsaytlar dizayn edib və inkişaf etdirdim.",
-                "Müştərilərlə UI/UX ehtiyaclarını başa düşmək və optimallaşdırılmış həllər təqdim etmək üçün əməkdaşlıq etdim.",
-                "SEO ən yaxşı təcrübələrini inteqrasiya etdim və brauzerlərarası uyğunluğu təmin etdim."
-            ];
-
-            CV_DATA.experience[1].title = "Qurucu & Baş Oyun Dizayneri";
-            CV_DATA.experience[1].period = "2026 - Günümüzə qədər";
-            CV_DATA.experience[1].description = [
-                "PC və mobil platformalar üçün yaradıcı və immersiv oyun təcrübələri inkişaf etdirmək üçün Rey Studio-nu qurdum.",
-                "Unity və C# istifadə edərək oyun mexanikası, personaj sistemləri və səviyyə dizaynlarını dizayn edib proqramlaşdırdım.",
-                "Kiçik bir rəssam və proqramçı komandasına rəhbərlik etdim, inkişaf dövrlərini idarə etdim və nəşr proseslərini nəzarət etdim."
-            ];
-
-            CV_DATA.experience[2].title = "Kiber Təhlükəsizlik Mütəxəssisi";
-            CV_DATA.experience[2].description = [
-                "Şəbəkə fəaliyyətini monitorinq etməkdə və potensial təhlükələri aşkarlamaqda kömək etdim.",
-                "Penetrasiya testlərinin əsaslarını öyrəndim və daxili auditlərdə iştirak etdim.",
-                "İctimai məlumatları toplamaq və təhlil etmək üçün açıq mənbəli OSINT alətləri ilə işlədim."
-            ];
-
-            CV_DATA.education[0].school = "Azərbaycan Texniki Universiteti";
-            CV_DATA.education[0].degree = "BSc Kiber Təhlükəsizlik";
-            CV_DATA.education[1].degree = "MSc Computer Science";
-
-            CV_DATA.skills = [
-                "Html & Css",
-                "JavaScript",
-                "Python",
-                "C++ / C#",
-                "Responsive Veb Dizayn",
-                "Oyun Dizaynı (Unity / Unreal Engine)",
-                "Kiber Təhlükəsizlik Prinsipləri",
-                "Şəbəkə Təhlükəsizliyi",
-                "İnformasiya Təhlükəsizliyi İdarəetməsi"
-            ];
-
-            CV_DATA.languages = [
-                "Azərbaycan (Ana dili)",
-                "İngilis (Orta)",
-                "Türk (Sərbəst)",
-                "İspan (Başlanğıc)"
-            ];
-
-            CV_DATA.references[0].position = "SkyTech / İnformasiya Təhlükəsizliyi Meneceri";
-            CV_DATA.references[1].position = "Rey Studio / Oyun Rəssamı";
+        // CV_DATA-nı yeniləmədən əvvəl mövcud məlumatları saxla
+        const savedData = localStorage.getItem('cvData');
+        if (savedData) {
+            const savedCVData = JSON.parse(savedData);
+            CV_DATA = {
+                ...CV_DATA,
+                ...savedCVData
+            };
         }
 
- 
+        // Profil mətnini dilə görə yenilə
+        if (this.currentLanguage === 'en') {
+            CV_DATA.personalInfo.jobTitle = "Web & Game Developer | Programmer | InfoSec Specialist";
+            if (!savedData) { // Əgər localStorage-də məlumat yoxdursa, default mətnləri istifadə et
+                CV_DATA.profile = "I am an experienced specialist in setting up security systems and managing IT infrastructure. I have skills in Windows and Linux systems, network security, and data protection. Additionally, I have knowledge in both backend and frontend web programming. I have experience in creating websites from scratch, writing programs, and developing PC or mobile games.";
+            }
+        } else {
+            CV_DATA.personalInfo.jobTitle = "Veb & Oyun Tərtibatçı | Proqramçı | İnfoSec Mütəxəssis";
+            if (!savedData) { // Əgər localStorage-də məlumat yoxdursa, default mətnləri istifadə et
+                CV_DATA.profile = "Təhlükəsizlik sistemlərinin qurulması və İT infrastrukturunun idarə edilməsi sahəsində təcrübəli mütəxəssisəm. Windows və Linux sistemləri, şəbəkə təhlükəsizliyi və məlumatların qorunması sahələrində bacarıqlarım var. Bundan əlavə, həm backend, həm də frontend veb proqramlaşdırma biliklərim var. Sıfırdan vebsaytlar yaratmaq, proqramlar yazmaq və PC və ya mobil oyunlar inkişaf etdirmək təcrübəm var.";
+            }
+        }
+
+        // Dəyişiklikləri localStorage-də saxla
+        localStorage.setItem('cvData', JSON.stringify(CV_DATA));
         DataManager.renderData();
     },
 
@@ -326,6 +249,7 @@ const PDFManager = {
 const ContactFormManager = {
     init() {
         this.setupForm();
+        loadContactFormFromLocalStorage();
     },
 
     setupForm() {
@@ -347,21 +271,27 @@ const ContactFormManager = {
 
     handleSubmit(e) {
         e.preventDefault();
-        
+    
+        if (!validateContactForm()) {
+            return;
+        }
+    
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             message: document.getElementById('message').value
         };
-
+    
         console.log('Form göndərildi:', formData);
-
+    
+    saveContactFormToLocalStorage(); 
+    
         e.target.reset();
         this.closeForm();
     }
 };
 
-const CV_DATA = {
+let CV_DATA = JSON.parse(localStorage.getItem('cvData')) || {
     personalInfo: {
         name: "MİRFAZİL YUSİFLİ",
         jobTitle: "Veb & Oyun Tərtibatçı | Proqramçı | İnfoSec Mütəxəssis",
@@ -717,6 +647,7 @@ const DataManager = {
         }
         this.renderData();
         this.closeModal();
+        localStorage.setItem('cvData', JSON.stringify(CV_DATA));
     },
 
     closeModal() {
@@ -850,3 +781,39 @@ document.addEventListener('DOMContentLoaded', function() {
         header.classList.remove('active');
     });
 }); 
+// 🔽 Yeni əlavə etdiyin funksiyalar:
+
+function validateContactForm() {
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+
+    let isValid = true;
+    let errorMessage = '';
+
+    if (!name.value.trim()) {
+        isValid = false;
+        errorMessage += 'Ad daxil edilməlidir.\n';
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim()) {
+        isValid = false;
+        errorMessage += 'E-poçt daxil edilməlidir.\n';
+    } else if (!emailPattern.test(email.value)) {
+        isValid = false;
+        errorMessage += 'E-poçt formatı yanlışdır.\n';
+    }
+
+    if (!message.value.trim()) {
+        isValid = false;
+        errorMessage += 'Mesaj daxil edilməlidir.\n';
+    }
+
+    if (!isValid) {
+        alert(errorMessage);
+    }
+
+    return isValid;
+}
+
