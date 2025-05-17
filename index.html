@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Mirfazil Yusifli</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <button class="language-toggle">AZ/EN</button>
+    <button class="download-pdf" onclick="downloadPDF()">📥 PDF</button>
+    <button class="theme-toggle">🌙</button>
+
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="contact-form" id="contactForm">
+        <h2 data-translate="contact-form">Əlaqə Formu</h2>
+        <form id="contactFormElement">
+            <div class="form-group">
+                <label for="name" data-translate="name">Ad Soyad</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email" data-translate="email">E-poçt</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message" data-translate="message">Mesaj</label>
+                <textarea id="message" rows="5" required></textarea>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="send-button" data-translate="send">Göndər</button>
+                <button type="button" class="close-button" onclick="closeContactForm()" data-translate="close">Bağla</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="cv-container">
+        <div class="left-column">
+            <img src="https://i.pinimg.com/736x/24/cc/88/24cc88ebbf5e1429ea093e93e0065535.jpg" alt="Profil Şəkli" class="profile-img">
+            
+            <div class="contact-info animate-on-scroll">
+                <h2 class="section-title accordion-header" onclick="toggleAccordion('contact-content')" data-translate="contact">ƏLAQƏ <span class="accordion-icon">▼</span></h2>
+                <div id="contact-content" class="accordion-content">
+                    <p><a href="https://wa.me/994504246582" target="_blank">📞 +994 50 424 65 82</a></p>
+                    <p><a href="javascript:void(0)" onclick="sendEmail('mirfazilyusifli@mail.ru')">✉️ mirfazilyusifli@mail.ru</a></p>
+                    <p>📍 Bakı, Yasamal, Nəzim Hikmət 32</p>
+                    <p><a href="https://www.magiclibrary.info" target="_blank">🌐 www.magiclibrary.info</a></p>
+                </div>
+            </div>
+
+            <div class="education animate-on-scroll">
+                <h2 class="section-title accordion-header" onclick="toggleAccordion('education-content')" data-translate="education">TƏHSİL <span class="accordion-icon">▼</span></h2>
+                <div id="education-content" class="accordion-content">
+                    <div class="education-item">
+                        <a href="https://aztu.edu.az" target="_blank"><h3>Azərbaycan Texniki Universiteti</h3></a>
+                        <p>2024 - 2028</p>
+                        <p>BSc Kiber Təhlükəsizlik</p>
+                        <p>GPA: 8.8 / 10.0</p>
+                    </div>
+                    <div class="education-item">
+                        <a href="https://www.tudelft.nl/en" target="_blank"><h3>Delft Texnologiya Universiteti</h3></a>
+                        <p>2028 - 2030</p>
+                        <p>MSc Kompüter Elmləri</p>
+                        <p>GPA: 3.6 / 4.0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills animate-on-scroll">
+                <h2 class="section-title accordion-header" onclick="toggleAccordion('skills-content')" data-translate="skills">BACARIQLAR <span class="accordion-icon">▼</span></h2>
+                <div id="skills-content" class="accordion-content">
+                    <ul class="skills-list">
+                        <li>Html & Css</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <li>C++ / C#</li>
+                        <li>Responsive Veb Dizayn</li>
+                        <li>Oyun Dizaynı (Unity / Unreal Engine)</li>
+                        <li>Kiber Təhlükəsizlik Prinsipləri</li>
+                        <li>Şəbəkə Təhlükəsizliyi</li>
+                        <li>İnformasiya Təhlükəsizliyi İdarəetməsi</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="languages animate-on-scroll">
+                <h2 class="section-title accordion-header" onclick="toggleAccordion('languages-content')" data-translate="languages">DİLLƏR <span class="accordion-icon">▼</span></h2>
+                <div id="languages-content" class="accordion-content">
+                    <ul class="languages-list">
+                        <li>Azərbaycan (Ana dili)</li>
+                        <li>İngilis (Orta)</li>
+                        <li>Türk (Sərbəst)</li>
+                        <li>İspan (Başlanğıc)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h1 class="name-title">MİRFAZİL YUSİFLİ</h1>
+            <p class="job-title">Veb & Oyun Tərtibatçı | Proqramçı | İnfoSec Mütəxəssis</p>
+
+            <div class="profile animate-on-scroll">
+                <h2 class="right-section-title accordion-header" onclick="toggleAccordion('profile-content')" data-translate="profile">PROFİL <span class="accordion-icon">▼</span></h2>
+                <div id="profile-content" class="accordion-content">
+                    <p>Təhlükəsizlik sistemlərinin qurulması və İT infrastrukturunun idarə edilməsi sahəsində təcrübəli mütəxəssisəm. Windows və Linux sistemləri, şəbəkə təhlükəsizliyi və məlumatların qorunması sahələrində bacarıqlarım var. Bundan əlavə, həm backend, həm də frontend veb proqramlaşdırma biliklərim var. Sıfırdan vebsaytlar yaratmaq, proqramlar yazmaq və PC və ya mobil oyunlar inkişaf etdirmək təcrübəm var.</p>
+                </div>
+            </div>
+
+            <div class="experience animate-on-scroll">
+                <h2 class="right-section-title accordion-header" onclick="toggleAccordion('experience-content')" data-translate="experience">TƏCRÜBƏ <span class="accordion-icon">▼</span></h2>
+                <div id="experience-content" class="accordion-content">
+                    <div class="work-item">
+                        <h3 class="work-title">Freelance Veb Dizayner</h3>
+                        <p class="work-date">2023 – Hal-hazırda</p>
+                        <h4 class="work-subtitle">Uzaqdan</h4>
+                        <ul class="work-description">
+                            <li>HTML, CSS və JavaScript istifadə edərək responsiv vebsaytlar dizayn edib və inkişaf etdirdim.</li>
+                            <li>Müştərilərlə UI/UX ehtiyaclarını başa düşmək və optimallaşdırılmış həllər təqdim etmək üçün əməkdaşlıq etdim.</li>
+                            <li>SEO ən yaxşı təcrübələrini inteqrasiya etdim və brauzerlərarası uyğunluğu təmin etdim.</li>
+                        </ul>
+                    </div>
+                
+                    <div class="work-item">
+                        <h3 class="work-title">Qurucu & Baş Oyun Dizayner</h3>
+                        <p class="work-date">2026 – Hal-hazırda</p>
+                        <h4 class="work-subtitle"><a href="https://www.reystudio.dev" target="_blank">Rey Studio</a></h4>
+                        <ul class="work-description">
+                            <li>PC və mobil platformalar üçün yaradıcı və immersiv oyun təcrübələri inkişaf etdirmək üçün Rey Studio-nu qurdum.</li>
+                            <li>Unity və C# istifadə edərək oyun mexanikası, personaj sistemləri və səviyyə dizaynlarını dizayn edib proqramlaşdırdım.</li>
+                            <li>Kiçik bir rəssam və proqramçı komandasına rəhbərlik etdim, inkişaf dövrlərini idarə etdim və nəşr proseslərini nəzarət etdim.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="work-item">
+                        <h3 class="work-title">Kiber Təhlükəsizlik Mütəxəssisi</h3>
+                        <p class="work-date">2025 – 2027</p>
+                        <h4 class="work-subtitle"><a href="https://www.skytech.ru" target="_blank">SkyTech</a></h4>
+                        <ul class="work-description">
+                            <li>Şəbəkə fəaliyyətini monitorinq etməkdə və potensial təhlükələri aşkarlamaqda kömək etdim.</li>
+                            <li>Penetrasiya testlərinin əsaslarını öyrəndim və daxili auditlərdə iştirak etdim.</li>
+                            <li>İctimai məlumatları toplamaq və təhlil etmək üçün açıq mənbəli OSINT alətləri ilə işlədim.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="references animate-on-scroll">
+                <h2 class="right-section-title accordion-header" onclick="toggleAccordion('references-content')" data-translate="references">İSTİNADLAR <span class="accordion-icon">▼</span></h2>
+                <div id="references-content" class="accordion-content">
+                    <div class="reference-grid">
+                        <div class="reference-item">
+                            <h3>Elvin Qasımov</h3>
+                            <p>SkyTech / İnformasiya Təhlükəsizliyi Meneceri</p>
+                            <p><a href="javascript:void(0)" onclick="openWhatsApp('994503124576')">📞 +994 50 312 45 76</a></p>
+                            <p><a href="javascript:void(0)" onclick="sendEmail('elvin.qasimov@skytech.com')">✉️ elvin.qasimov@skytech.com</a></p>
+                        </div>
+                        
+                        <div class="reference-item">
+                            <h3>Leyla Məmmədova</h3>
+                            <p>Rey Studio / Oyun Rəssamı</p>
+                            <p><a href="javascript:void(0)" onclick="openWhatsApp('994557985634')">📞 +994 55 798 56 34</a></p>
+                            <p><a href="javascript:void(0)" onclick="sendEmail('leyla.m@reystudio.dev')">✉️ leyla.m@reystudio.dev</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
